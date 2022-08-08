@@ -14,7 +14,7 @@ if (b == 0)
     Console.WriteLine($"{a} - четное");
 }
 else
-Console.WriteLine($"{a} - нечетное");
+Console.WriteLine("Повторите попытку");
 
 
 
