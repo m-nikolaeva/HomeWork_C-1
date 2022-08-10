@@ -12,4 +12,4 @@ int number = Convert.ToInt32(Console.ReadLine());
 int a = number / 10; //получили двузначное
 int result = a % 10; //получили последнюю цифру
 if (number > 99 && number < 1000 || number < -99 && number > -1000) Console.WriteLine($"{number} -> {result}");
-
+else Console.WriteLine("Число не трехзначное. Попробуйте снова.");
