@@ -17,8 +17,16 @@ int max = a;
 
 if (a > max) max = a;
 if (b > max) max = b;
-if (c > max) max = c;
+if (c > max) max = c; 
+
+if (a == b && b == c) Console.WriteLine($"Числа {a}, {b} и {c} равны. Попробуйте снова");
+
+else
 {
     Console.WriteLine($"Из введенных чисел: {a}, {b} и {c}, максимальное равно: {max}");
 }
+
+
+
+
 
