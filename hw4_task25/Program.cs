@@ -16,7 +16,7 @@ if (b <= 0)
     return;
 }
 
-int RaiseDegree(int a1, int b1)
+int RaiseDegree(int a1, int b1)  //возведение в степень
 {
     int result = 1;
     for (int i = 0; i < b1; i++)
