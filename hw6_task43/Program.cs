@@ -20,8 +20,8 @@ double k2 = Convert.ToDouble(Console.ReadLine());
 void IntersectionPoint(double b01, double k01, double b02, double k02)
 {
     if (k01 == k02) Console.WriteLine("Прямые параллельны, либо совпадают. Введите другие числа.");
-    else if (k01 * (b02 - b01) / (k01 - k02) + b01 == k02 * (b02 - b01) / (k01 - k02) + b02) 
-    Console.Write($" -> ({(b02 - b01) / (k01 - k02)};{k01 * (b02 - b01) / (k01 - k02) + b01})");
+    else if (k01 * (b02 - b01) / (k01 - k02) + b01 == k02 * (b02 - b01) / (k01 - k02) + b02)
+    Console.Write($" -> ({Math.Round((b02 - b01) / (k01 - k02), 1)}; {Math.Round (k01 * (b02 - b01) / (k01 - k02) + b01, 1)})");
 }
 
 Console.Write($"b1 = {b1}, k1 = {k1}, b2 = {b2}, k2 = {k2} ");
