@@ -29,10 +29,10 @@ int[,] CreateMatrixRndInt(int row, int col, int min, int max)
     return matrix;
 }
 
-void FindElement(int[,] matrix, int x, int y) 
+void FindElement(int[,] matrix, int x, int y)
 {
-    if (x-1 < 0 || y-1 < 0) Console.WriteLine("Вы ввели некорректные значения. Попробуйте снова.");
-    else if (x-1 < matrix.GetLength(0) && y-1 < matrix.GetLength(1)) Console.WriteLine($"{x}, {y} -> {matrix[x-1, y-1]}");
+    if (x - 1 < 0 || y - 1 < 0) Console.WriteLine("Вы ввели некорректные значения. Попробуйте снова.");
+    else if (x - 1 < matrix.GetLength(0) && y - 1 < matrix.GetLength(1)) Console.WriteLine($"{x}, {y} -> {matrix[x - 1, y - 1]}");
     else Console.WriteLine($"{x}, {y} -> такого элемента в массиве нет");
 }
 
