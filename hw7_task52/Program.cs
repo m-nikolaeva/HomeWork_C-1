@@ -6,22 +6,22 @@
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
 
-int[,] CreateMatrixRndInt(int row, int col, int min, int max)
+double[,] CreateMatrixRndDouble(int row, int col, int min, int max)   //метод создания рандомного двумерного массива
 {
-    int[,] matrix = new int[row, col];
+    double[,] matrix = new double[row, col];
     Random rnd = new Random();
 
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = rnd.Next(min, max + 1);
+            matrix[i, j] = Math.Round(rnd.NextDouble() * (max - min) + min, 0);
         }
     }
     return matrix;
 }
 
-void PrintMatrix(int[,] matrix)
+void PrintMatrixDouble(double[,] matrix)   //метод вывода в консоль двумерного массива
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -35,60 +35,41 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-// void GetArithmeticAverageCol(int[,] matrix)
-// {
-//     for (int j = 0; j < matrix.GetLength(1); j++)
-//     {
-//         double sum = 0;
-//         for (int i = 0; i < matrix.GetLength(0); i++)
-//         {
-//             sum += matrix[i, j];
-//         }
-//         sum = Math.Round(sum / matrix.GetLength(1), 1);
-//     }
-// }
-
-
-void GetArithmeticAverageCol(int[,] matrix)
+double[] GetArithmeticAverageCol(double[,] matrix)//метод поиска ср. арифм. по столбцам, с сохранением рез-та в одномер. массив
 {
-    double[] array = new double[matrix.GetLength(1)];
-    for (int j = 0; j < matrix.GetLength(1); j++)
+    int col = matrix.GetLength(1);
+    int row = matrix.GetLength(0);
+    double[] array = new double[col];
+    double result = 0;
+    for (int j = 0; j < col; j++)
     {
         double sum = 0;
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int i = 0; i < row; i++)
         {
-            sum += matrix[i, j];
-            array[i] = Math.Round(sum / matrix.GetLength(1), 1);
+            sum = sum + matrix[i, j];
+            result = Math.Round(sum / row, 1);
         }
+        array[j] = result;
     }
+    return array;
 }
-// double[] CreateArrayRndDouble(int size, int min, int max)
-// {
-//     double[] array = new double[size];
-//     Random rnd = new Random();
 
-//     for (int i = 0; i < size; i++)
-//     {
-//         array[i] = Math.Round(rnd.NextDouble() * (max - min) + min, 1);
-//     }
-//     return array;
-// }
-
-void PrintArray(double[] array)
+void PrintArray(double[] array)  //метод вывода в консоль одномерного массива 
 {
-    Console.Write("[");
+    Console.Write("Среднее арифметическое каждого столбца: ");
     for (int i = 0; i < array.Length; i++)
     {
         if (i < array.Length - 1) Console.Write($"{array[i]}, ");
         else Console.Write(array[i]);
     }
-    Console.Write("]");
+    Console.Write(".");
 }
 
 
-int[,] array2D = CreateMatrixRndInt(3, 4, 1, 9);
-PrintMatrix(array2D);
-Console.WriteLine();
-// double getArithmeticAverageCol = GetArithmeticAverageCol(array2D);
-GetArithmeticAverageCol(array2D);
-PrintArray(array);
+double[,] array2D = CreateMatrixRndDouble(3, 4, 1, 10);
+PrintMatrixDouble(array2D);
+double[] getArithmeticAverageCol = GetArithmeticAverageCol(array2D);
+PrintArray(getArithmeticAverageCol);
+
+
+
