@@ -45,16 +45,16 @@ void SelectionSortRow(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < matrix.GetLength(1)-1; j++)
+        for (int j = 0; j < matrix.GetLength(1) - 1; j++)
         {
             for (int col = 0; col < matrix.GetLength(1) - 1; col++)
             {
-            if (matrix[i, col] < matrix[i, col + 1])
-            { 
-            int temporary = matrix[i, col];
-            matrix[i, col] = matrix[i, col + 1];
-            matrix[i, col + 1] = temporary;
-            }
+                if (matrix[i, col] < matrix[i, col + 1])
+                {
+                    int temporary = matrix[i, col];
+                    matrix[i, col] = matrix[i, col + 1];
+                    matrix[i, col + 1] = temporary;
+                }
             }
         }
 
