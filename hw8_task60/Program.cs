@@ -6,78 +6,84 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
+Console.Clear();
 
-int[,,] Create3DMatrixRndInt(int x, int y, int z, int min, int max)
+int[,,] CreateUniqueArrayInt(int x, int y, int z, int min, int max)
 {
-    int[,,] matrix3d = new int[x, y, z];
+    int[] array = new int[x * y * z];
+    int number = 0;
     Random rnd = new Random();
-
-    for (int i = 0; i < matrix3d.GetLength(0); i++)
+    for (int a = 0; a < x * y * z; a++)
     {
-        for (int j = 0; j < matrix3d.GetLength(1); j++)
+        array[a] = rnd.Next(min, max + 1);
+        number = array[a];
+        if (a >= 1)
         {
-            for (int k = 0; k < matrix3d.GetLength(2); k++)
+            for (int b = 0; b < a; b++)
             {
-                matrix3d[i, j, k] = rnd.Next(min, max + 1);
+                while (array[a] == array[b])
+                {
+                    array[a] = rnd.Next(min, max + 1);
+                    b = 0;
+                    number = array[a];
+                }
+                number = array[a];
             }
         }
     }
-    return matrix3d;
-}
-
-int[] CreateArrayInt(int[,,] matrix3D, int x, int y, int z)
-{
-    int[] array = new int[x * y * z];
-    int n = 0;
+    int count = 0;
+    int[,,] martix3D = new int[x, y, z];
     for (int i = 0; i < x; i++)
     {
         for (int j = 0; j < y; j++)
         {
             for (int k = 0; k < z; k++)
             {
-                array[n++] = matrix3D[i, j, k];
+                martix3D[i, j, k] = array[count];
+                count++;
             }
         }
     }
-    return array;
+    return martix3D;
 }
 
-
-
-
-
-
-        void Print3DMatrix(int[,,] matrix3d)
+void Print3DMatrix(int[,,] matrix3d)
+{
+    for (int i = 0; i < matrix3d.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix3d.GetLength(1); j++)
         {
-            for (int i = 0; i < matrix3d.GetLength(0); i++)
+            for (int k = 0; k < matrix3d.GetLength(2); k++)
             {
-                for (int j = 0; j < matrix3d.GetLength(1); j++)
-                {
-                    for (int k = 0; k < matrix3d.GetLength(2); k++)
-                    {
-                        Console.Write($"{matrix3d[i, j, k]}({i},{j},{k}) ");
-                    }
-                    Console.WriteLine();
-                }
+                Console.Write($"{matrix3d[i, j, k]}({i},{j},{k}) ");
             }
             Console.WriteLine();
         }
+    }
+    Console.WriteLine();
+}
 
-        void PrintArray(int[] array)
-        {
-            Console.Write("[");
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (i < array.Length - 1) Console.Write($"{array[i]}, ");
-                else Console.Write(array[i]);
-            }
-            Console.Write("]");
-        }
+int[,,] createUniqueArrayInt = CreateUniqueArrayInt(2, 2, 2, 10, 99);
+Print3DMatrix(createUniqueArrayInt);
+
+// int[,,] createUniqueArrayInt = CreateUniqueArrayInt(2, 2, 2, 10, 17); //проверка, что все числа уникальны.
+// Print3DMatrix(createUniqueArrayInt);
 
 
-        int[,,] mtx3D = Create3DMatrixRndInt(2, 2, 2, 10, 99);
-        Print3DMatrix(mtx3D);
-        int[] createArrayInt = CreateArrayInt(mtx3D, 2, 2, 2);
-        PrintArray(createArrayInt);
+// Console.Write("Введите число X: ");                //для ввода данных пользователем
+// int x0 = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите число Y: ");
+// int y0 = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите число Z: ");
+// int z0 = Convert.ToInt32(Console.ReadLine());
+
+// Console.Write("Введите минимальное число диапозона: ");
+// int min0 = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите максимальное число диапозона: ");
+// int max0 = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine();
+
+// int[,,] createUniqueArrayInt = CreateUniqueArrayInt(x0, y0, z0, min0, max0); 
+// Print3DMatrix(createUniqueArrayInt);
 
 
