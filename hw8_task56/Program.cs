@@ -11,6 +11,7 @@ Console.WriteLine("Введите число строк: ");
 int m = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите число столбцов: ");
 int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine();
 
 int[,] CreateMatrixRndInt(int row, int col, int min, int max)
 {
@@ -74,3 +75,4 @@ Console.WriteLine();
 int[] sumElemRow = SumElemRow(mtx);
 int minPosition = MinPosition (sumElemRow);
 Console.WriteLine($"Номер строки с наименьшей суммой элементов: № {minPosition+1}");
+Console.WriteLine();
