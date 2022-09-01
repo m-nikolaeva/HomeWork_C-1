@@ -16,24 +16,6 @@ int k = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите число столбцов второй матрицы: ");
 int l = Convert.ToInt32(Console.ReadLine());
 
-if (n != k) Console.WriteLine("Произведение матриц возможно при условии: число столбцов первой матрицы = число строк второй.");
-else if (n == k)
-{
-    int[,] mtx1 = CreateMatrixRndInt(m, n, 1, 3);
-    Console.WriteLine("Первая матрица:");
-    PrintMatrix(mtx1);
-    int[,] mtx2 = CreateMatrixRndInt(n, l, 1, 3);
-    Console.WriteLine("Вторая матрица:");
-    PrintMatrix(mtx2);
-    Console.WriteLine();
-    // int[,] productOfMatrix = ProductOfMatrix(mtx1, mtx2, m, l);
-    int[,] productOfMatrix1 = ProductOfMatrix1(mtx1, mtx2, m, l);
-    Console.WriteLine("Произведение двух матриц:");
-    // PrintMatrix(productOfMatrix);
-    PrintMatrix(productOfMatrix1);
-    Console.WriteLine();
-}
-
 int[,] CreateMatrixRndInt(int row, int col, int min, int max)
 {
     int[,] matrix = new int[row, col];
@@ -63,34 +45,36 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-// int[,] ProductOfMatrix(int[,] matrix1, int[,] matrix2, int m0, int l0) //метод для квадратной матрицы m0==l0
-// {
-//     int[,] matrix3 = new int[m0, l0];
-//     for (int i = 0; i < m0; i++)
-//     {
-//         for (int j = 0; j < l0; j++)
-//         {
-//             for (int t = 0; t < m0; t++)
-//             {
-//                 matrix3[i, j] += matrix1[i,t] * matrix2[t, j];
-//             }
-//         }
-//     }
-//     return matrix3;
-// }
-
-int[,] ProductOfMatrix1(int[,] matrix1, int[,] matrix2, int m0, int l0) //метод матрицы, в которой строк меньше, чем столбцов m0<l0
+int[,] ProductOfMatrix(int[,] matrix1, int[,] matrix2, int m0, int n0, int l0) 
 {
     int[,] matrix3 = new int[m0, l0];
     for (int i = 0; i < m0; i++)
     {
         for (int j = 0; j < l0; j++)
         {
-            for (int t = 0; t < m0+1; t++)
+            for (int t = 0; t < n0; t++)
             {
                 matrix3[i, j] += matrix1[i,t] * matrix2[t, j];
             }
         }
     }
     return matrix3;
+}
+
+if (n != k) Console.WriteLine("Произведение матриц возможно при условии: число столбцов первой матрицы = числу строк второй матрицы.");
+else if (n == k)
+{
+    int[,] mtx1 = CreateMatrixRndInt(m, n, 1, 3);
+    Console.WriteLine("Первая матрица:");
+    PrintMatrix(mtx1);
+
+    int[,] mtx2 = CreateMatrixRndInt(n, l, 1, 3);
+    Console.WriteLine("Вторая матрица:");
+    PrintMatrix(mtx2);
+    Console.WriteLine();
+
+    int[,] productOfMatrix = ProductOfMatrix(mtx1, mtx2, m, n, l);
+    Console.WriteLine("Произведение двух матриц:");
+    PrintMatrix(productOfMatrix);
+    Console.WriteLine();
 }
