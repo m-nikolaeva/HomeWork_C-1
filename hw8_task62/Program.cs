@@ -9,27 +9,27 @@ Console.Write("Введите размер массива -> ");
 int size1 = Convert.ToInt32(Console.ReadLine());
 
 
-int[,] SpiralMatrix (int size)
+int[,] SpiralMatrix(int size)
 {
-int[,] spiral = new int[size, size];
-int number = 1;
-int i = 0;
-int j = 0;
+    int[,] spiral = new int[size, size];
+    int number = 1;
+    int i = 0;
+    int j = 0;
 
-while (number <= size * size)
-{
-    spiral[i, j] = number;
-    if (i <= j + 1 && i + j < size - 1)
-        j++;
-    else if (i < j && i + j >= size - 1)
-        i++;
-    else if (i >= j && i + j > size - 1)
-        j--;
-    else
-        i--;
-    number++;
-}
-return spiral;
+    while (number <= size * size)
+    {
+        spiral[i, j] = number;
+        if (i <= j + 1 && i + j < size - 1)
+            j++;
+        else if (i < j && i + j >= size - 1)
+            i++;
+        else if (i >= j && i + j > size - 1)
+            j--;
+        else
+            i--;
+        number++;
+    }
+    return spiral;
 }
 
 void PrintMatrix(int[,] matrix)
@@ -46,6 +46,6 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[,] spiralMatrix = SpiralMatrix (size1); 
+int[,] spiralMatrix = SpiralMatrix(size1);
 PrintMatrix(spiralMatrix);
 
