@@ -12,29 +12,25 @@ int size1 = Convert.ToInt32(Console.ReadLine());
 int[,] SpiralMatrix (int size)
 {
 int[,] spiral = new int[size, size];
-int num = 1;
+int number = 1;
 int i = 0;
 int j = 0;
 
-while (num <= size * size)
+while (number <= size * size)
 {
-    spiral[i, j] = num;
+    spiral[i, j] = number;
     if (i <= j + 1 && i + j < size - 1)
-        ++j;
+        j++;
     else if (i < j && i + j >= size - 1)
-        ++i;
+        i++;
     else if (i >= j && i + j > size - 1)
-        --j;
+        j--;
     else
-        --i;
-    ++num;
+        i--;
+    number++;
 }
 return spiral;
 }
-
-
-int[,] spiralMatrix = SpiralMatrix (size1); 
-PrintMatrix(spiralMatrix);
 
 void PrintMatrix(int[,] matrix)
 {
@@ -49,3 +45,7 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine("]");
     }
 }
+
+int[,] spiralMatrix = SpiralMatrix (size1); 
+PrintMatrix(spiralMatrix);
+
