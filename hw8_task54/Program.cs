@@ -14,18 +14,6 @@ int m = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите число столбцов: ");
 int n = Convert.ToInt32(Console.ReadLine());
 
-int[,] mtx = CreateMatrixRndInt(m, n, 1, 9);
-
-Console.WriteLine("Исходная матрица:");
-PrintMatrix(mtx);
-
-Console.WriteLine("Модифицированная матрица:");
-SelectionSortRow(mtx);
-PrintMatrix(mtx);
-
-Console.WriteLine();
-
-
 int[,] CreateMatrixRndInt(int row, int col, int min, int max)
 {
     int[,] matrix = new int[row, col];
@@ -74,3 +62,12 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine("]");
     }
 }
+
+int[,] mtx = CreateMatrixRndInt(m, n, 1, 9);
+Console.WriteLine("Исходная матрица:");
+PrintMatrix(mtx);
+Console.WriteLine();
+Console.WriteLine("Модифицированная матрица:");
+SelectionSortRow(mtx);
+PrintMatrix(mtx);
+Console.WriteLine();
