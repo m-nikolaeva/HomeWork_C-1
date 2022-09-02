@@ -4,16 +4,22 @@
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
 Console.Clear();
-Console.Write("Введите целое положительное чиcло -> ");
+Console.Write("Введите целое число больше нуля -> ");
 int number = Convert.ToInt32(Console.ReadLine());
 
-void NaturalNumber(int num)
+if (number <= 0) Console.Write("Некорректный ввод. Попробуйте снова.");
+else
 {
-    Console.Write($"{num} ");
-    if (num == 1) return;
-    NaturalNumber(num - 1);
+    void NaturalNumber(int num)
+    {
+        Console.Write($"{num} ");
+        if (num == 1) return;
+        NaturalNumber(num - 1);
+    }
+
+    NaturalNumber(number);
 }
 
-NaturalNumber(number);
+
 
 
